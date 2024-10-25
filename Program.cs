@@ -30,8 +30,8 @@ char[,] gameboard = new char[,] {
     {'-', '-', '-'}, 
     {'-', '-', '-'}};
 
-int p1 = 0;
-int p2 = 0;
+double p1 = 0;
+double p2 = 0;
 int rundor = 0;
 
 while(true){
@@ -40,16 +40,13 @@ while(true){
 
 void Main(){
     P1();
-    Vin();
+    Slut();
     P2();
-    Vin();
+    Slut();
 }
 
 void P1(){
-    if(p1 > 0 || p2>0){
-        Console.WriteLine("\n" + "Ställningen är: " + p1 + ':' + p2 + "\n");
-        rundor++;
-    }
+    
     Gameboard_Load(gameboard);
     if(rundor == 0){
         Console.WriteLine("Spelare 1 skriv ett koordinat x,y");
@@ -69,11 +66,8 @@ void P1(){
     }
 }
 
+
 void P2(){
-    if(p1 > 0 || p2>0){
-        Console.WriteLine("\n" + "Ställningen är: " + p1 + ':' + p2);
-        rundor++;
-    }
     Gameboard_Load(gameboard);
     if(rundor == 0){
         Console.WriteLine("Spelare 2 skriv ett koordinat x,y");
@@ -92,6 +86,7 @@ void P2(){
         }
     }
 }
+
 
 void Gameboard_Load(char[,] gb){
     for (int i = 0; i < gb.GetLength(0); i++)
@@ -125,28 +120,40 @@ void Gameboard_Load(char[,] gb){
     }
 }
 
-void Vin(){
+void Slut(){
     for (int i = 0; i < 3; i++)
     {
         if (gameboard[i, 0] == 'x' && gameboard[i, 1] == 'x' && gameboard[i, 2] == 'x' || 
             gameboard[0, i] == 'x' && gameboard[1, i] == 'x' && gameboard[2, i] == 'x' ||
             gameboard[0, 0] == 'x' && gameboard[1, 1] == 'x' && gameboard[2, 2] == 'x' ||
             gameboard[2, 0] == 'x' && gameboard[1, 1] == 'x' && gameboard[0, 2] == 'x') {
-            Console.WriteLine("Player1 wins");
+            Console.WriteLine("Spelare 1 vann!!");
             Reset();
             p1++;
         } else if  (gameboard[i, 0] == 'o' && gameboard[i, 1] == 'o' && gameboard[i, 2] == 'o' || 
                     gameboard[0, i] == 'o' && gameboard[1, i] == 'o' && gameboard[2, i] == 'o' ||
                     gameboard[0, 0] == 'o' && gameboard[1, 1] == 'o' && gameboard[2, 2] == 'o' ||
                     gameboard[2, 0] == 'o' && gameboard[1, 1] == 'o' && gameboard[0, 2] == 'o') {
-                        Console.WriteLine("Player2 wins");
+                        Console.WriteLine("Spelare 2 vann!!");
                         Reset();
                         p2++;
+                    }
+                    else if (gameboard[0, 0] != '-' && gameboard[1, 0] != '-' && gameboard[2, 0] != '-' && 
+                            gameboard[0, 1] != '-' && gameboard[1, 1] != '-' && gameboard[2, 1] != '-' &&
+                            gameboard[0, 2] != '-' && gameboard[1, 2] != '-' && gameboard[2, 2] != '-'){
+                                Console.Write("Det blev lika");
+                                p1 += 0.5;
+                                p2 += 0.5;
+                                Reset();
+                                break;
                     }
     }
 }
 
 void Reset(){
+    if(p1 > 0 || p2>0){
+        Console.WriteLine("\n" + "Ställningen är: " + p1 + ':' + p2 + "\n");
+        rundor++;}
     gameboard = new char[,]{
     {'-', '-', '-'}, 
     {'-', '-', '-'}, 

@@ -27,3 +27,4 @@ C:\Github\Array\bin\Debug\net8.0\Array.dll
 C:\Github\Array\bin\Debug\net8.0\Array.pdb
 C:\Github\Array\obj\Debug\net8.0\Array.genruntimeconfig.cache
 C:\Github\Array\obj\Debug\net8.0\ref\Array.dll
+C:\Users\Admin\Documents\GitHub\Array\obj\Debug\net8.0\Array.sourcelink.json

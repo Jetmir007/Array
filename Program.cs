@@ -128,15 +128,16 @@ void Slut(){
             gameboard[0, 0] == 'x' && gameboard[1, 1] == 'x' && gameboard[2, 2] == 'x' ||
             gameboard[2, 0] == 'x' && gameboard[1, 1] == 'x' && gameboard[0, 2] == 'x') {
             Console.WriteLine("Spelare 1 vann!!");
-            Reset();
             p1++;
+            Reset();
         } else if  (gameboard[i, 0] == 'o' && gameboard[i, 1] == 'o' && gameboard[i, 2] == 'o' || 
                     gameboard[0, i] == 'o' && gameboard[1, i] == 'o' && gameboard[2, i] == 'o' ||
                     gameboard[0, 0] == 'o' && gameboard[1, 1] == 'o' && gameboard[2, 2] == 'o' ||
                     gameboard[2, 0] == 'o' && gameboard[1, 1] == 'o' && gameboard[0, 2] == 'o') {
                         Console.WriteLine("Spelare 2 vann!!");
-                        Reset();
                         p2++;
+                        Reset();
+                        
                     }
                     else if (gameboard[0, 0] != '-' && gameboard[1, 0] != '-' && gameboard[2, 0] != '-' && 
                             gameboard[0, 1] != '-' && gameboard[1, 1] != '-' && gameboard[2, 1] != '-' &&
@@ -150,13 +151,13 @@ void Slut(){
     }
 }
 
-void Reset(){
-    if(p1 > 0 || p2>0){
-        Console.WriteLine("\n" + "Ställningen är: " + p1 + ':' + p2 + "\n");
-        rundor++;}
+void Reset(){    
+    Console.WriteLine("\n" + "Ställningen är: " + p1 + ':' + p2 + ". Fortsätt med en runda till" + "\n");
+    rundor++;
     gameboard = new char[,]{
     {'-', '-', '-'}, 
     {'-', '-', '-'}, 
     {'-', '-', '-'}};
 }
+
     

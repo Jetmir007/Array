@@ -120,20 +120,21 @@ void Gameboard_Load(char[,] gb){
     }
 }
 
+bool Vann(char spelare, char[,] gameboard, int i) {
+    return gameboard[i, 0] == spelare && gameboard[i, 1] == spelare && gameboard[i, 2] == spelare || 
+            gameboard[0, i] == spelare && gameboard[1, i] == spelare && gameboard[2, i] == spelare ||
+            gameboard[0, 0] == spelare && gameboard[1, 1] == spelare && gameboard[2, 2] == spelare ||
+            gameboard[2, 0] == spelare && gameboard[1, 1] == spelare && gameboard[0, 2] == spelare;
+}
+
 void Slut(){
     for (int i = 0; i < 3; i++)
     {
-        if (gameboard[i, 0] == 'x' && gameboard[i, 1] == 'x' && gameboard[i, 2] == 'x' || 
-            gameboard[0, i] == 'x' && gameboard[1, i] == 'x' && gameboard[2, i] == 'x' ||
-            gameboard[0, 0] == 'x' && gameboard[1, 1] == 'x' && gameboard[2, 2] == 'x' ||
-            gameboard[2, 0] == 'x' && gameboard[1, 1] == 'x' && gameboard[0, 2] == 'x') {
+        if (Vann('x', gameboard, i)) {
             Console.WriteLine("Spelare 1 vann!!");
             p1++;
             Reset();
-        } else if  (gameboard[i, 0] == 'o' && gameboard[i, 1] == 'o' && gameboard[i, 2] == 'o' || 
-                    gameboard[0, i] == 'o' && gameboard[1, i] == 'o' && gameboard[2, i] == 'o' ||
-                    gameboard[0, 0] == 'o' && gameboard[1, 1] == 'o' && gameboard[2, 2] == 'o' ||
-                    gameboard[2, 0] == 'o' && gameboard[1, 1] == 'o' && gameboard[0, 2] == 'o') {
+        } else if  (Vann('o', gameboard, i)) {
                         Console.WriteLine("Spelare 2 vann!!");
                         p2++;
                         Reset();

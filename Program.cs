@@ -140,15 +140,15 @@ void Slut(){
                         Reset();
                         
                     }
-                    else if (gameboard[0, 0] != '-' && gameboard[1, 0] != '-' && gameboard[2, 0] != '-' && 
-                            gameboard[0, 1] != '-' && gameboard[1, 1] != '-' && gameboard[2, 1] != '-' &&
-                            gameboard[0, 2] != '-' && gameboard[1, 2] != '-' && gameboard[2, 2] != '-'){
-                                Console.Write("Det blev lika");
-                                p1 += 0.5;
-                                p2 += 0.5;
-                                Reset();
-                                break;
-                    }
+        else if (gameboard[0, 0] != '-' && gameboard[1, 0] != '-' && gameboard[2, 0] != '-' && 
+            gameboard[0, 1] != '-' && gameboard[1, 1] != '-' && gameboard[2, 1] != '-' &&
+            gameboard[0, 2] != '-' && gameboard[1, 2] != '-' && gameboard[2, 2] != '-'){
+            Console.Write("Det blev lika");
+            p1 += 0.5;
+            p2 += 0.5;
+            Reset();
+            break;
+        }
     }
 }
 
@@ -160,5 +160,3 @@ void Reset(){
     {'-', '-', '-'}, 
     {'-', '-', '-'}};
 }
-
-    
